@@ -1,0 +1,29 @@
+<div [formGroup]="form" class="w-[60%] mx-auto">
+
+    <div>
+      <h4>Select Month</h4>
+      <mat-form-field class="" appearance="outline">
+        <input matInput formControlName="monthYear" placeholder="mm/yyyy" [matDatepicker]="dp" />
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp startView="multi-year" panelClass="example-month-picker">
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+  
+    <div>
+      <h4>Date From - Date To</h4>
+      <mat-form-field class="" appearance="outline">
+  
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="mm/dd/yyyy" />
+          <input matEndDate formControlName="end" placeholder="mm/dd/yyyy" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  
+  </div>
+  
+  <div class="mt-8"></div>

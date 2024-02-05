@@ -1,40 +1,15 @@
-<div class="bg-orange-400 ">
-  <h2 class="bg-orange-400 ">Lorem ipsum dolor sit amet.</h2>
+
+
+<div class="w-full text-center my-6">
+  <button mat-raised-button color="primary" (click)="goToDateComponent()">Date Format</button>
 </div>
 
-<div [formGroup]="form" class="w-[60%] mx-auto">
-
-  <div>
-    <h4>Select Month</h4>
-    <mat-form-field class="" appearance="outline">
-      <input matInput formControlName="monthYear" placeholder="mm/yyyy" [matDatepicker]="dp" />
-      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-      <mat-datepicker #dp startView="multi-year" panelClass="example-month-picker">
-      </mat-datepicker>
-    </mat-form-field>
-  </div>
-
-
-  <div>
-    <h4>Date From - Date To</h4>
-    <mat-form-field class="" appearance="outline">
-
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate formControlName="start" placeholder="mm/dd/yyyy" />
-        <input matEndDate formControlName="end" placeholder="mm/dd/yyyy" />
-      </mat-date-range-input>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-  </div>
-
-</div>
-
-<div class="mt-8"></div>
-
-<div class="w-full text-center">
+<div class="w-full text-center mb-6">
   <button mat-raised-button color="primary" (click)="openFullScreen()">Full Screen</button>
 </div>
 
+<div class="w-full text-center mb-6">
+  <button mat-raised-button color="primary" (click)="goToTable()">Table</button>
+</div>
 
-<!-- <router-outlet /> -->
+<router-outlet />

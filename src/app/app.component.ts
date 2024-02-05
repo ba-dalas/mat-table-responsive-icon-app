@@ -1,6 +1,7 @@
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
 
   constructor(private readonly fb: FormBuilder,
      private datePipe: DatePipe,
+     private router: Router,
     ) {}
 
   ngOnInit() {
@@ -42,6 +44,14 @@ export class AppComponent implements OnInit {
       document.exitFullscreen();
     }
     this.isFullScreen = !this.isFullScreen;
+
+  }
+
+  goToTable(){
+    this.router.navigateByUrl('/table')
+  }
+
+  goToDateComponent(){
 
   }
 
