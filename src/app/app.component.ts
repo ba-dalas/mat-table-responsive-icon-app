@@ -50,6 +50,21 @@ export class AppComponent implements OnInit {
   goToTable(){
     this.router.navigateByUrl('/table')
   }
+  goToTableOne(){
+    this.router.navigateByUrl('/table-one')
+  }
+
+  goToTableTwo(){
+    this.router.navigateByUrl('/table-two')
+  }
+
+  goToTableThree(){
+    this.router.navigateByUrl('/table-three')
+  }
+
+  goToTableFour(){
+    this.router.navigateByUrl('/table-four')
+  }
 
   goToDateComponent(){
 

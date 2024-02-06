@@ -1,15 +1,14 @@
 
 
-<div class="w-full text-center my-6">
+<div class="w-full text-center  flex justify-between px-8 py-6">
   <button mat-raised-button color="primary" (click)="goToDateComponent()">Date Format</button>
-</div>
-
-<div class="w-full text-center mb-6">
   <button mat-raised-button color="primary" (click)="openFullScreen()">Full Screen</button>
+  <button mat-raised-button color="primary" (click)="goToTable()">Table</button>
+  <button mat-raised-button color="primary" (click)="goToTableOne()">Table One</button>
+  <button mat-raised-button color="primary" (click)="goToTableTwo()">Table Two</button>
+  <button mat-raised-button color="primary" (click)="goToTableThree()">Table Three</button>
+  <button mat-raised-button color="primary" (click)="goToTableFour()">Table Four</button>
 </div>
 
-<div class="w-full text-center mb-6">
-  <button mat-raised-button color="primary" (click)="goToTable()">Table</button>
-</div>
 
 <router-outlet />

@@ -14,12 +14,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { TableComponent } from './table/table.component';
 import { DateFormatComponent } from './date-format/date-format.component';
+import {MatTableModule} from '@angular/material/table';
+import { TableOneComponent } from './table-one/table-one.component';
+import { TableTwoComponent } from './table-two/table-two.component';
+import { TableThreeComponent } from './table-three/table-three.component';
+import { TableFourComponent } from './table-four/table-four.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    DateFormatComponent
+    DateFormatComponent,
+    TableOneComponent,
+    TableTwoComponent,
+    TableThreeComponent,
+    TableFourComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,8 @@ import { DateFormatComponent } from './date-format/date-format.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync(),
