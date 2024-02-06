@@ -19,6 +19,7 @@ import { TableOneComponent } from './table-one/table-one.component';
 import { TableTwoComponent } from './table-two/table-two.component';
 import { TableThreeComponent } from './table-three/table-three.component';
 import { TableFourComponent } from './table-four/table-four.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TableFourComponent } from './table-four/table-four.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync(),
