@@ -6,3 +6,60 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mobile-label {
+    display: none;
+  }
+
+  @media (max-width: 1280px) {
+
+    table {
+        width: 100% !important;
+        
+      }
+     
+    .mat-mdc-header-row {
+      display: none;
+    }
+  
+    .mobile-label {
+      display: inline-block !important;
+      font-weight: bold;
+      
+    }
+  
+  
+    .mat-mdc-header-row {
+      display: none !important;
+    }
+  
+
+    .mdc-data-table__cell,
+    .mdc-data-table__header-cell {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 4px !important ;
+      padding: 1rem !important;
+  
+    }
+  
+    .mat-mdc-row {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: start;
+        padding: 1rem;
+        border-width: 1px !important;
+        border-color: #abadaf !important;
+        border-radius: 0.5rem !important;
+       
+      }
+  
+  
+    .mat-mdc-cell {
+        border: none !important;
+      }
+  }
+
+
