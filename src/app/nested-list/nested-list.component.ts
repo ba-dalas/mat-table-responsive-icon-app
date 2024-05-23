@@ -6,7 +6,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './nested-list.component.html',
   styleUrl: './nested-list.component.scss'
 })
-export class NestedListComponent implements   OnInit {
+export class NestedListComponent implements OnInit {
   userForm: FormGroup;
   totalDays = 30;
 
@@ -15,27 +15,52 @@ export class NestedListComponent implements   OnInit {
       {
         id: 161,
         fullName: 'Md. Jakaria Ahmed',
-        contractValue:100,
-        attendanceCount:10
+        contractValue: 100,
+        attendanceCount: 10
       },
       {
         id: 174,
         fullName: 'Ryad Moyashir Ratul',
-        contractValue:100,
-        attendanceCount:10
-        
+        contractValue: 100,
+        attendanceCount: 10
       },
     ],
+  
     [
+      {
+        id: 161,
+        fullName: 'Md. Jakaria Ahmed',
+        contractValue: 100,
+        attendanceCount: 10
+      },
+      {
+        id: 174,
+        fullName: 'Ryad Moyashir Ratul',
+        contractValue: 100,
+        attendanceCount: 10
+      },
+      {
+        id: 174,
+        fullName: 'Ryad Moyashir Ratul',
+        contractValue: 100,
+        attendanceCount: 10
+      },
+      {
+        id: 174,
+        fullName: 'Ryad Moyashir Ratul',
+        contractValue: 100,
+        attendanceCount: 10
+      },
+    ],
+
+      [
       {
         id: 177,
         fullName: 'Afia Tabassum Nishat',
-        contractValue:100,
-        attendanceCount:10
-       
+        contractValue: 100,
+        attendanceCount: 10
       },
     ],
-    
   ];
 
   constructor(private fb: FormBuilder) {
