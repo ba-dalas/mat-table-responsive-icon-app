@@ -6,87 +6,61 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './nested-list.component.html',
   styleUrl: './nested-list.component.scss'
 })
-export class NestedListComponent implements OnInit, OnChanges {
-  totalDays!: number;
-  imageUrl: string = 'assets/images/pro.jpg';
- 
+export class NestedListComponent implements   OnInit {
+  userForm: FormGroup;
+  totalDays = 30;
 
-  userForm!: FormGroup;
+  nestedData = [
+    [
+      {
+        id: 161,
+        fullName: 'Md. Jakaria Ahmed',
+        contractValue:100,
+        attendanceCount:10
+      },
+      {
+        id: 174,
+        fullName: 'Ryad Moyashir Ratul',
+        contractValue:100,
+        attendanceCount:10
+        
+      },
+    ],
+    [
+      {
+        id: 177,
+        fullName: 'Afia Tabassum Nishat',
+        contractValue:100,
+        attendanceCount:10
+       
+      },
+    ],
+    
+  ];
 
-   ypPayrollListData!: any[];
-  
- 
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      users: this.fb.array([])
+    });
+  }
 
   ngOnInit() {
-  this.ypPayrollListData= [
-    {
-        "id": 185,
-        "fullName": "Khandaker Imran  Hossain",
-        "contractValue": 1600.0,
-        "attendanceCount": 0,
-        
-        
-    },
-    {
-        "id": 185,
-        "fullName": "Khandaker Imran  Hossain",
-        "contractValue": 1600.0,
-        "attendanceCount": 0,
-        
-        
-    },  
- 
-]
-
-    this.userForm = this.fb.group({
-      users: this.fb.array([]),
-    });
-    this.getEmployee();
+    this.flattenAndSetData();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {}
-
- 
-
-  getEmployee() {
-
-    const control = <FormArray>this.userForm.get('users');
-    for (const emp of this.ypPayrollListData) {
-    
-      const grp = this.fb.group({
-        id: [emp.id],
-        attendanceCount: [emp.attendanceCount],
-        contractValue: [emp.contractValue],
-        fullName: [emp.fullName],
-        
-      });
-
-      control.push(grp);
-    }
+  get getFormData() {
+    return this.userForm.get('users') as FormArray;
   }
 
-  initiatForm(): FormGroup {
-    return this.fb.group({
-      id: [''],
-    
-  
-      attendanceCount: [''],
- 
-      contractValue: [''],
-  
-      fullName: [''],
-
+  flattenAndSetData() {
+    const flattenedData = this.nestedData.reduce((acc, val) => acc.concat(val), []);
+    flattenedData.forEach(user => {
+      this.getFormData.push(this.fb.group({
+        id: user.id,
+        fullName: user.fullName,
+        contractValue: [user.contractValue],
+        attendanceCount: [user.attendanceCount]
+      }));
     });
   }
-
- 
-// 
-  get getFormData(): FormArray {
-    return <FormArray>this.userForm.get('users');
-  }
-
-
- 
 }
