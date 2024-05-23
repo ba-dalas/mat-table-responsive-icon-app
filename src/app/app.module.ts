@@ -20,6 +20,7 @@ import { TableTwoComponent } from './table-two/table-two.component';
 import { TableThreeComponent } from './table-three/table-three.component';
 import { TableFourComponent } from './table-four/table-four.component';
 import {MatIconModule} from '@angular/material/icon';
+import { NestedListComponent } from './nested-list/nested-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     TableOneComponent,
     TableTwoComponent,
     TableThreeComponent,
-    TableFourComponent
+    TableFourComponent,
+    NestedListComponent
   ],
   imports: [
     BrowserModule,

@@ -70,4 +70,9 @@ export class AppComponent implements OnInit {
 
   }
 
+  goToNestedList(){
+    this.router.navigateByUrl('/nested-list')
+    
+  }
+
 }
