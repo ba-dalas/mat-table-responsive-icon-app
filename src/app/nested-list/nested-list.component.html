@@ -1,28 +1,29 @@
 <div class="m-6">
-    <div>
-      <form [formGroup]="userForm" class="flex flex-col w-full px-0 py-0 my-0">
-        <div class="example-container mat-elevation-z8">
-          <table class="table w-full">
-            <thead>
-              <tr class="flex justify-between h-14 text-black bg-gray-200 mb-0 uppercase text-base text-black-500 font-semibold">
-                <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">EMPLOYEE</th>
-                <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">DAILY RATES</th>
-                <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">ATTENDANCE COUNT</th>
-                <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              <ng-container *ngFor="let group of nestedData; let i = index">
-                <tr *ngIf="group.length > 1" [style.background-color]="i % 2 != 0 ? '#F0F8FF' : 'white'" class="hover:border-blue-400 hover:bg-blue-100 hover:border">
+  <div>
+    <form [formGroup]="userForm" class="flex flex-col w-full px-0 py-0 my-0">
+      <div class="example-container mat-elevation-z8">
+        <table class="table w-full">
+          <thead>
+            <tr class="flex justify-between h-14 text-black bg-gray-200 mb-0 uppercase text-base text-black-500 font-semibold">
+              <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">EMPLOYEE</th>
+              <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">DAILY RATES</th>
+              <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">ATTENDANCE COUNT</th>
+              <th class="px-4 py-2 font-medium lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">ACTION</th>
+            </tr>
+          </thead>
+          <tbody formArrayName="users">
+            <ng-container *ngFor="let group of nestedData; let i = index">
+              <ng-container *ngIf="group.length > 1">
+                <tr [style.background-color]="i % 2 != 0 ? '#F0F8FF' : 'white'" class="hover:border-blue-400 hover:bg-blue-100 hover:border">
                   <td colspan="4" class="px-4 py-2">
                     <div class="bg-gray-100 p-4">
                       <table class="table w-full">
-                        <tbody formArrayName="users">
+                        <tbody>
                           <ng-container *ngFor="let user of group; let j = index">
-                            <tr [formGroupName]="i * nestedData[0].length + j" class="flex justify-between">
+                            <tr [formGroupName]="getUserFormGroupIndex(user.id)" class="flex justify-between">
                               <td class="px-4 py-2 w-[600px]">
                                 <div class="flex items-center justify-start space-x-2">
-                                  <p class="font-medium">{{ getFormData.at(i * nestedData[0].length + j).get('fullName')?.value }}</p>
+                                  <p class="font-medium">{{ getFormData.at(getUserFormGroupIndex(user.id)).get('fullName')?.value }}</p>
                                 </div>
                               </td>
                               <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
@@ -36,7 +37,7 @@
                                 </mat-form-field>
                               </td>
                               <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
-                                <button mat-raised-button color="primary" matTooltip="Attendance Report"
+                                <button mat-raised-button color="primary" matTooltip="Attendance Report" (click)="multipleView(group , j) "
                                         class="ml-2 text-white bg-violet-400 hover:bg-white hover:text-green-400">
                                   <i class="material-icons">visibility</i>
                                 </button>
@@ -48,34 +49,34 @@
                     </div>
                   </td>
                 </tr>
-                <tr *ngIf="group.length === 1" [formGroupName]="i * nestedData[0].length" class="flex justify-between">
-                  <td class="px-4 py-2 w-[600px]">
-                    <div class="flex items-center justify-start space-x-2">
-                      <p class="font-medium">{{ getFormData.at(i * nestedData[0].length).get('fullName')?.value }}</p>
-                    </div>
-                  </td>
-                  <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
-                    <mat-form-field appearance="outline" class="min-w-[100%]">
-                      <input type="number" matInput formControlName="contractValue" placeholder="Contract value"/>
-                    </mat-form-field>
-                  </td>
-                  <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
-                    <mat-form-field appearance="outline" class="min-w-[100%]">
-                      <input [max]="totalDays" type="number" matInput formControlName="attendanceCount" placeholder="Attendance count"/>
-                    </mat-form-field>
-                  </td>
-                  <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
-                    <button mat-raised-button color="primary" matTooltip="Attendance Report"
-                            class="ml-2 text-white bg-violet-400 hover:bg-white hover:text-green-400">
-                      <i class="material-icons">visibility</i>
-                    </button>
-                  </td>
-                </tr>
               </ng-container>
-            </tbody>
-          </table>
-        </div>
-      </form>
-    </div>
+              <tr *ngIf="group.length === 1" [formGroupName]="getUserFormGroupIndex(group[0].id)" class="flex justify-between">
+                <td class="px-4 py-2 w-[600px]">
+                  <div class="flex items-center justify-start space-x-2">
+                    <p class="font-medium">{{ getFormData.at(getUserFormGroupIndex(group[0].id)).get('fullName')?.value }}</p>
+                  </div>
+                </td>
+                <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
+                  <mat-form-field appearance="outline" class="min-w-[100%]">
+                    <input type="number" matInput formControlName="contractValue" placeholder="Contract value"/>
+                  </mat-form-field>
+                </td>
+                <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
+                  <mat-form-field appearance="outline" class="min-w-[100%]">
+                    <input [max]="totalDays" type="number" matInput formControlName="attendanceCount" placeholder="Attendance count"/>
+                  </mat-form-field>
+                </td>
+                <td class="px-4 py-2 lg:w-1/3 md:w-1/2 sm:w-1/2 w-fit">
+                  <button mat-raised-button color="primary" matTooltip="Attendance Report" (click)="singleView(group)"
+                          class="ml-2 text-white bg-violet-400 hover:bg-white hover:text-green-400">
+                    <i class="material-icons">visibility</i>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </form>
   </div>
-  
+</div>

@@ -25,37 +25,35 @@ export class NestedListComponent implements OnInit {
         attendanceCount: 10
       },
     ],
-  
     [
       {
-        id: 161,
+        id: 162,
         fullName: 'Md. Jakaria Ahmed',
         contractValue: 100,
         attendanceCount: 10
       },
       {
-        id: 174,
+        id: 163,
         fullName: 'Ryad Moyashir Ratul',
         contractValue: 100,
         attendanceCount: 10
       },
       {
-        id: 174,
+        id: 164,
         fullName: 'Ryad Moyashir Ratul',
         contractValue: 100,
         attendanceCount: 10
       },
       {
-        id: 174,
+        id: 165,
         fullName: 'Ryad Moyashir Ratul',
         contractValue: 100,
         attendanceCount: 10
       },
     ],
-
-      [
+    [
       {
-        id: 177,
+        id: 166,
         fullName: 'Afia Tabassum Nishat',
         contractValue: 100,
         attendanceCount: 10
@@ -87,5 +85,20 @@ export class NestedListComponent implements OnInit {
         attendanceCount: [user.attendanceCount]
       }));
     });
+  }
+
+  getUserFormGroupIndex(userId: number): number {
+    return this.getFormData.controls.findIndex(ctrl => ctrl.get('id')?.value === userId);
+  }
+
+
+  multipleView(singleGroup:any , index:number){
+    console.log('singleGroup====>' , singleGroup , index);
+    
+  }
+
+  singleView(singleGroup:any){
+    console.log('singleGroup====>' , singleGroup);
+    
   }
 }
